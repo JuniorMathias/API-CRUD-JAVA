@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.domain.Product;
+import com.spring.model.FilterModel;
+import com.spring.model.PageModel;
 import com.spring.repository.ProductRepository;
 
 @Service
@@ -17,6 +19,11 @@ public class ProductService implements IListService<Product>{
     public List<Product> list() {
         List<Product> products = repository.findAll();
         return products;
+    }
+
+    @Override
+    public PageModel<Product> list(FilterModel filter) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
