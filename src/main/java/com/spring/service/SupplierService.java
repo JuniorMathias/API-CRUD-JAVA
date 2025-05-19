@@ -3,6 +3,7 @@ package com.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.spring.domain.Supplier;
@@ -23,7 +24,11 @@ public class SupplierService implements IListService<Supplier>{
 
     @Override
     public PageModel<Supplier> list(FilterModel filter) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Page<Supplier> supplierPage =  repository.findAll(filter.toSpringPageable());
+
+        PageModel<Supplier> pm = new PageModel<>(supplierPage);
+
+        return pm;
     }
     
 }

@@ -25,8 +25,6 @@ public class CategoryService implements IListService<Category>{
 
     @Override
     public PageModel<Category> list(FilterModel filter) {
-      
-
         Page<Category> categoryPage =  repository.findAll(filter.toSpringPageable());
 
         PageModel<Category> pm = new PageModel<>(categoryPage);

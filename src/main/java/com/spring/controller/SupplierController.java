@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.domain.Supplier;
+import com.spring.model.FilterModel;
+import com.spring.model.PageModel;
 import com.spring.service.SupplierService;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "suppliers")
@@ -19,8 +23,9 @@ public class SupplierController {
     private SupplierService service;
 
     @GetMapping    
-    public ResponseEntity<List<Supplier>> list() {
-        List<Supplier> suppliers = service.list();
-        return ResponseEntity.ok(suppliers);
+    public ResponseEntity<PageModel<Supplier>> list(@RequestParam Map<String, String> params) {
+        FilterModel filter = new FilterModel(params);
+        PageModel<Supplier> pm =  service.list(filter);
+        return ResponseEntity.ok(pm);
     }
 }
