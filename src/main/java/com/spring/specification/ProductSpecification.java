@@ -16,15 +16,15 @@ public class ProductSpecification {
 
     public static Specification<Product> equal(EqualFilterModel eq) {
         return new Specification<Product>() {
+            
             private static final long serialVersionUID = 1L;
 
             @Override
             public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 Expression<?> expression = root.get(eq.getColumn());
 
-                Predicate predicate = eq.getIsEqual()
-                        ? cb.equal(expression, eq.getValue())
-                        : cb.notEqual(expression, eq.getValue());
+                Predicate predicate = (eq.getIsEqual() ? cb.equal(expression, eq.getValue())
+                        : cb.notEqual(expression, eq.getValue()));
 
                 return predicate;
             }
