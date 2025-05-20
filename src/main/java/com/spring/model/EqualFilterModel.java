@@ -9,13 +9,8 @@ import lombok.Setter;
 @Getter
 public class EqualFilterModel {
 
-    
-    
     private String column;
     private String value;
     private Boolean isEqual;
-
-    public EqualFilterModel(String column, String value, boolean isEqual) {
-    }
 
 }
