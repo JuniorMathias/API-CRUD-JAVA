@@ -11,4 +11,6 @@ public class ApiConstants {
     public static final String EQUAL_FILTER_KEY = "equal_filters";
     public static final String DEFAULT_EQUAL_FILTERS = null;
 
+    public static final String DOT = ".";
+
 }
